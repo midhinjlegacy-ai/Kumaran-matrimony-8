@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7b1235">
+<title>Kumaran Matrimony - Admin</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f3f4;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg,#7b1235,#c2185b);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.container {
+    width: 94%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.08);
+}
+
+h2 {
+    color: #7b1235;
+}
+
+h3 {
+    color: #7b1235;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 6px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+button {
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #7b1235;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+.google {
+    width: 100%;
+    background: white;
+    color: #333;
+    border: 1px solid #bbb;
+}
+
+.google span {
+    color: #4285f4;
+    font-size: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.dashboard {
+    display: none;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.stat {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.07);
+}
+
+.stat-number {
+    font-size: 30px;
+    color: #7b1235;
+    font-weight: bold;
+}
+
+.toolbar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.member {
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background: #fff;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin: 3px;
+    background: #fce4ec;
+    color: #7b1235;
+}
+
+.approved {
+    background: #e8f5e9;
+    color: #176b2c;
+}
+
+.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.rejected {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.danger {
+    background: #b00020;
+}
+
+.secondary {
+    background: #555;
+}
+
+.success {
+    background: #16803c;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.message {
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.payment-box {
+    background: #fff1f4;
+    border: 2px solid #7b1235;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.upi {
+    font-weight: bold;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+@media(max-width:700px) {
+
+    .row,
+    .stats,
+    .toolbar {
+        grid-template-columns: 1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💍 Kumaran Matrimony</h1>
+    <p>Administrator Panel</p>
+</header>
+
+
+<div class="container">
+
+<!-- ================= ADMIN SIGN UP ================= -->
+
+<section id="signupPage" class="card">
+
+    <h2>Admin Sign Up</h2>
+
+    <p>Create the administrator account for Kumaran Matrimony.</p>
+
+    <form id="adminSignupForm">
+
+        <label>Admin Name</label>
+        <input
+            id="adminName"
+            type="text"
+            placeholder="Enter admin name"
+            required
+        >
+
+        <label>Gmail ID</label>
+        <input
+            id="adminEmail"
+            type="email"
+            placeholder="admin@gmail.com"
+            required
+        >
+
+        <label>Mobile Number</label>
+        <input
+            id="adminMobile"
+            type="tel"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            placeholder="10 digit mobile number"
+            required
+        >
+
+        <label>Create Admin Password</label>
+        <input
+            id="adminPassword"
+            type="password"
+            minlength="8"
+            placeholder="Minimum 8 characters"
+            required
+        >
+
+        <button type="submit">
+            Create Admin Account
+        </button>
+
+    </form>
+
+    <div id="signupMessage"></div>
+
+    <hr style="margin:25px 0;">
+
+    <button class="google" onclick="googleAdminDemo()">
+        <span>G</span>
+        Continue with Google
+    </button>
+
+</section>
+
+
+<!-- ================= ADMIN LOGIN ================= -->
+
+<section id="loginPage" class="card hidden">
+
+    <h2>Admin Login</h2>
+
+    <form id="loginForm">
+
+        <label>Admin Gmail</label>
+
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="Admin Gmail"
+            required
+        >
+
+        <label>Password</label>
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Admin password"
+            required
+        >
+
+        <button type="submit">
+            Login to Admin Panel
+        </button>
+
+    </form>
+
+    <div id="loginMessage"></div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="dashboard">
+
+    <div class="card">
+
+        <h2>Admin Dashboard</h2>
+
+        <p id="adminWelcome"></p>
+
+        <button
+            class="danger"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-number" id="totalMembers">0</div>
+            <div>Total Members</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number" id="pendingMembers">0</div>
+            <div>Pending</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number" id="approvedMembers">0</div>
+            <div>Approved</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number" id="totalPayments">₹0</div>
+            <div>Payment Records</div>
+        </div>
+
+    </div>
+
+
+    <!-- PAYMENT SETTINGS -->
+
+    <div class="card">
+
+        <h2>Membership Payment</h2>
+
+        <div class="payment-box">
+
+            <h3>Registration Fee</h3>
+
+            <p>Membership amount:</p>
+
+            <h2>₹200</h2>
+
+            <p>UPI ID for receiving payments:</p>
+
+            <div class="upi">
+                midhinjlegacy@oksbi
+            </div>
+
+            <p style="font-size:13px;color:#777;">
+                Payment status should be verified through a
+                proper payment provider/backend before a member
+                is approved.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- MEMBER MANAGEMENT -->
+
+    <div class="card">
+
+        <h2>Member Management</h2>
+
+        <div class="toolbar">
+
+            <input
+                id="searchInput"
+                placeholder="Search name, Gmail, district..."
+                oninput="renderMembers()"
+            >
+
+            <select id="filterGender"
+                    onchange="renderMembers()">
+                <option value="">All genders</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <select id="filterStatus"
+                    onchange="renderMembers()">
+                <option value="">All statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+
+            <button onclick="addDemoMember()">
+                + Demo Member
+            </button>
+
+        </div>
+
+        <div id="memberList"></div>
+
+    </div>
+
+
+    <!-- ADD MEMBER -->
+
+    <div class="card">
+
+        <h2>Add Member Manually</h2>
+
+        <form id="memberForm">
+
+            <div class="row">
+
+                <div>
+
+                    <label>Name</label>
+
+                    <input
+                        id="memberName"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>Gender</label>
+
+                    <select id="memberGender">
+
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Height</label>
+
+                    <input
+                        id="memberHeight"
+                        placeholder="Example: 5'6&quot;"
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>Religion</label>
+
+                    <input id="memberReligion">
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Caste / Community</label>
+
+                    <input id="memberCaste">
+
+                </div>
+
+                <div>
+
+                    <label>District</label>
+
+                    <select id="memberDistrict">
+
+                        <option>Alappuzha</option>
+                        <option>Ernakulam</option>
+                        <option>Idukki</option>
+                        <option>Kannur</option>
+                        <option>Kasaragod</option>
+                        <option>Kollam</option>
+                        <option>Kottayam</option>
+                        <option>Kozhikode</option>
+                        <option>Malappuram</option>
+                        <option>Palakkad</option>
+                        <option>Pathanamthitta</option>
+                        <option>Thiruvananthapuram</option>
+                        <option>Thrissur</option>
+                        <option>Wayanad</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <label>Address</label>
+
+            <textarea id="memberAddress"></textarea>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Mobile</label>
+
+                    <input
+                        id="memberMobile"
+                        type="tel"
+                        maxlength="10"
+                    >
+
+                </div>
+
+                <div>
+
+                    <label>Gmail</label>
+
+                    <input
+                        id="memberEmail"
+                        type="email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>Education</label>
+
+            <input id="memberEducation">
+
+
+            <label>Occupation</label>
+
+            <input id="memberOccupation">
+
+
+            <button type="submit">
+                Add Member
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<footer>
+    © 2026 Kumaran Matrimony — Admin Panel
+</footer>
+
+
+<script>
+
+/*
+========================================================
+KUMARAN MATRIMONY ADMIN
+SINGLE FILE HTML DEMO
+========================================================
+
+IMPORTANT:
+
+This is a FRONTEND DEMO.
+
+The admin password and member information are stored
+in browser localStorage.
+
+For a real application use:
+
+Firebase Authentication
+        +
+Firestore / secure database
+        +
+Server-side authorization
+        +
+Payment provider verification
+
+Never store production admin passwords in localStorage.
+*/
+
+
+let admin = null;
+let members = [];
+
+
+/* ================================================
+   STORAGE
+================================================ */
+
+function loadData() {
+
+    admin =
+        JSON.parse(
+            localStorage.getItem("kumaranAdmin") || "null"
+        );
+
+    members =
+        JSON.parse(
+            localStorage.getItem("kumaranMembers") || "[]"
+        );
+
+
+    if (admin) {
+
+        document.getElementById("signupPage")
+            .classList.add("hidden");
+
+        document.getElementById("loginPage")
+            .classList.remove("hidden");
+
+    }
+
+}
+
+
+/* ================================================
+   ADMIN SIGN UP
+================================================ */
+
+document
+.getElementById("adminSignupForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name =
+        document.getElementById("adminName").value.trim();
+
+    const email =
+        document.getElementById("adminEmail").value.trim();
+
+    const mobile =
+        document.getElementById("adminMobile").value.trim();
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+
+    if (password.length < 8) {
+
+        showMessage(
+            "signupMessage",
+            "Password must contain at least 8 characters.",
+            true
+        );
+
+        return;
+    }
+
+
+    admin = {
+
+        name: name,
+        email: email,
+        mobile: mobile,
+
+        /*
+        DEMO ONLY.
+        Never store a real password this way.
+        */
+
+        password: password,
+
+        created:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "kumaranAdmin",
+        JSON.stringify(admin)
+    );
+
+
+    showMessage(
+        "signupMessage",
+        "Admin account created successfully."
+    );
+
+
+    setTimeout(function() {
+
+        document.getElementById("signupPage")
+            .classList.add("hidden");
+
+        document.getElementById("loginPage")
+            .classList.remove("hidden");
+
+    }, 800);
+
+});
+
+
+/* ================================================
+   GOOGLE ADMIN DEMO
+================================================ */
+
+function googleAdminDemo() {
+
+    /*
+    This does NOT perform real Google authentication.
+
+    Real Google authentication must be implemented
+    through Firebase Authentication or Google Identity.
+    */
+
+    alert(
+        "Google Sign-In requires Firebase/Google authentication configuration. This button is a demo."
+    );
+
+}
+
+
+/* ================================================
+   LOGIN
+================================================ */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    if (!admin) {
+
+        showMessage(
+            "loginMessage",
+            "No admin account found.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const email =
+        document.getElementById("loginEmail")
+        .value.trim();
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    if (
+        email === admin.email &&
+        password === admin.password
+    ) {
+
+        openDashboard();
+
+    } else {
+
+        showMessage(
+            "loginMessage",
+            "Incorrect Gmail or password.",
+            true
+        );
+
+    }
+
+});
+
+
+/* ================================================
+   DASHBOARD
+================================================ */
+
+function openDashboard() {
+
+    document.getElementById("loginPage")
+        .classList.add("hidden");
+
+    document.getElementById("signupPage")
+        .classList.add("hidden");
+
+    document.getElementById("dashboard")
+        .style.display = "block";
+
+
+    document.getElementById("adminWelcome")
+        .textContent =
+        "Welcome, " + admin.name +
+        " (" + admin.email + ")";
+
+
+    renderMembers();
+
+}
+
+
+/* ================================================
+   LOGOUT
+================================================ */
+
+function logout() {
+
+    document.getElementById("dashboard")
+        .style.display = "none";
+
+    document.getElementById("loginPage")
+        .classList.remove("hidden");
+
+    document.getElementById("loginPassword")
+        .value = "";
+
+}
+
+
+/* ================================================
+   ADD MEMBER
+================================================ */
+
+document
+.getElementById("memberForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+
+    const member = {
+
+        id: Date.now(),
+
+        name:
+            document.getElementById("memberName").value,
+
+        gender:
+            document.getElementById("memberGender").value,
+
+        height:
+            document.getElementById("memberHeight").value,
+
+        religion:
+            document.getElementById("memberReligion").value,
+
+        caste:
+            document.getElementById("memberCaste").value,
+
+        district:
+            document.getElementById("memberDistrict").value,
+
+        address:
+            document.getElementById("memberAddress").value,
+
+        mobile:
+            document.getElementById("memberMobile").value,
+
+        email:
+            document.getElementById("memberEmail").value,
+
+        education:
+            document.getElementById("memberEducation").value,
+
+        occupation:
+            document.getElementById("memberOccupation").value,
+
+        payment:
+            "Pending",
+
+        status:
+            "Pending",
+
+        created:
+            new Date().toISOString()
+
+    };
+
+
+    members.push(member);
+
+    saveMembers();
+
+    this.reset();
+
+    renderMembers();
+
+});
+
+
+/* ================================================
+   DEMO MEMBER
+================================================ */
+
+function addDemoMember() {
+
+    const demo = {
+
+        id: Date.now(),
+
+        name: "Demo Member",
+
+        gender: "Female",
+
+        height: "5'4\"",
+
+        religion: "Hindu",
+
+        caste: "Community",
+
+        district: "Ernakulam",
+
+        address: "Kerala",
+
+        mobile: "0000000000",
+
+        email: "demo@example.com",
+
+        education: "Graduate",
+
+        occupation: "Professional",
+
+        payment: "Paid",
+
+        status: "Pending",
+
+        created: new Date().toISOString()
+
+    };
+
+
+    members.push(demo);
+
+    saveMembers();
+
+    renderMembers();
+
+}
+
+
+/* ================================================
+   SAVE
+================================================ */
+
+function saveMembers() {
+
+    localStorage.setItem(
+        "kumaranMembers",
+        JSON.stringify(members)
+    );
+
+}
+
+
+/* ================================================
+   RENDER MEMBERS
+================================================ */
+
+function renderMembers() {
+
+    const list =
+        document.getElementById("memberList");
+
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const gender =
+        document.getElementById("filterGender")
+        .value;
+
+
+    const status =
+        document.getElementById("filterStatus")
+        .value;
+
+
+    const filtered =
+        members.filter(function(member) {
+
+            const text =
+                (
+                    member.name + " " +
+                    member.email + " " +
+                    member.district + " " +
+                    member.religion + " " +
+                    member.caste
+                ).toLowerCase();
+
+
+            return (
+
+                text.includes(search) &&
+
+                (!gender ||
+                    member.gender === gender) &&
+
+                (!status ||
+                    member.status === status)
+
+            );
+
+        });
+
+
+    list.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        list.innerHTML =
+            "<p>No members found.</p>";
+
+    }
+
+
+    filtered.forEach(function(member) {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "member";
+
+
+        div.innerHTML = `
+
+            <h3>${escapeHTML(member.name)}</h3>
+
+            <span class="badge">
+                ${escapeHTML(member.gender)}
+            </span>
+
+            <span class="badge">
+                ${escapeHTML(member.district)}
+            </span>
+
+            <span class="badge">
+                ${escapeHTML(member.status)}
+            </span>
+
+            <span class="badge">
+                Payment: ${escapeHTML(member.payment)}
+            </span>
+
+            <p>
+                <b>Height:</b>
+                ${escapeHTML(member.height)}
+            </p>
+
+            <p>
+                <b>Religion:</b>
+                ${escapeHTML(member.religion)}
+            </p>
+
+            <p>
+                <b>Caste:</b>
+                ${escapeHTML(member.caste)}
+            </p>
+
+            <p>
+                <b>Education:</b>
+                ${escapeHTML(member.education)}
+            </p>
+
+            <p>
+                <b>Occupation:</b>
+                ${escapeHTML(member.occupation)}
+            </p>
+
+            <p>
+                <b>Mobile:</b>
+                ${escapeHTML(member.mobile)}
+            </p>
+
+            <p>
+                <b>Gmail:</b>
+                ${escapeHTML(member.email)}
+            </p>
+
+            <p>
+                <b>Address:</b>
+                ${escapeHTML(member.address)}
+            </p>
+
+            <button
+                class="success"
+                onclick="approveMember(${member.id})">
+                ✓ Approve
+            </button>
+
+            <button
+                class="secondary"
+                onclick="rejectMember(${member.id})">
+                Reject
+            </button>
+
+            <button
+                class="danger"
+                onclick="deleteMember(${member.id})">
+                Delete
+            </button>
+
+        `;
+
+
+        list.appendChild(div);
+
+    });
+
+
+    updateStatistics();
+
+}
+
+
+/* ================================================
+   APPROVE
+================================================ */
+
+function approveMember(id) {
+
+    const member =
+        members.find(m => m.id === id);
+
+    if (!member) return;
+
+
+    member.status = "Approved";
+
+    saveMembers();
+
+    renderMembers();
+
+}
+
+
+/* ================================================
+   REJECT
+================================================ */
+
+function rejectMember(id) {
+
+    const member =
+        members.find(m => m.id === id);
+
+    if (!member) return;
+
+
+    member.status = "Rejected";
+
+    saveMembers();
+
+    renderMembers();
+
+}
+
+
+/* ================================================
+   DELETE
+================================================ */
+
+function deleteMember(id) {
+
+    if (
+        !confirm(
+            "Delete this member permanently?"
+        )
+    ) return;
+
+
+    members =
+        members.filter(
+            member => member.id !== id
+        );
+
+
+    saveMembers();
+
+    renderMembers();
+
+}
+
+
+/* ================================================
+   STATISTICS
+================================================ */
+
+function updateStatistics() {
+
+    document.getElementById("totalMembers")
+        .textContent = members.length;
+
+
+    document.getElementById("pendingMembers")
+        .textContent =
+        members.filter(
+            m => m.status === "Pending"
+        ).length;
+
+
+    document.getElementById("approvedMembers")
+        .textContent =
+        members.filter(
+            m => m.status === "Approved"
+        ).length;
+
+
+    const paid =
+        members.filter(
+            m => m.payment === "Paid"
+        ).length;
+
+
+    document.getElementById("totalPayments")
+        .textContent =
+        "₹" + (paid * 200);
+
+}
+
+
+/* ================================================
+   MESSAGE
+================================================ */
+
+function showMessage(id, message, error=false) {
+
+    const element =
+        document.getElementById(id);
+
+    element.className =
+        "message " +
+        (error ? "error" : "success");
+
+    element.textContent = message;
+
+}
+
+
+/* ================================================
+   BASIC HTML ESCAPING
+================================================ */
+
+function escapeHTML(value) {
+
+    if (value === undefined ||
+        value === null) {
+        return "";
+    }
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ================================================
+   START APPLICATION
+================================================ */
+
+loadData();
+
+</script>
+
+</body>
+</html>

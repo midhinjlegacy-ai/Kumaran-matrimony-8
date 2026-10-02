@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#941b36">
+<title>Kumaran Matrimony</title>
+
+<style>
+mmm
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f6f3f4;
+    color:#222;
+}
+
+header{
+    background:linear-gradient(135deg,#86132e,#c73558);
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+header h1{margin:0;font-size:25px}
+header p{margin:6px 0 0;font-size:13px}
+
+nav{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    background:white;
+    padding:9px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    box-shadow:0 2px 10px #0002;
+}
+
+nav button{
+    border:0;
+    background:#f2e8eb;
+    color:#8b1732;
+    padding:11px 15px;
+    border-radius:22px;
+    white-space:nowrap;
+    font-weight:bold;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
+    box-shadow:0 3px 15px #0001;
+}
+
+.hero{
+    background:linear-gradient(135deg,#86132e,#d04b6c);
+    color:white;
+    text-align:center;
+    border-radius:20px;
+    padding:30px 20px;
+}
+
+.hero h2{color:white;font-size:29px}
+.ring{font-size:60px}
+
+h2{color:#8b1732}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:12px;
+    margin-bottom:6px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+}
+
+textarea{min-height:100px}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+@media(max-width:600px){
+    .grid{grid-template-columns:1fr}
+}
+
+.primary{
+    width:100%;
+    background:#961b38;
+    color:white;
+    border:0;
+    padding:14px;
+    border-radius:11px;
+    margin-top:15px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.secondary{
+    background:#eee;
+    color:#8b1732;
+    border:0;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.price{
+    text-align:center;
+    color:#941b36;
+    font-size:42px;
+    font-weight:bold;
+}
+
+.success{
+    background:#e6f7eb;
+    color:#176a30;
+    padding:12px;
+    border-radius:10px;
+    margin-top:12px;
+}
+
+.warning{
+    background:#fff3cd;
+    color:#745600;
+    padding:12px;
+    border-radius:10px;
+    margin-top:12px;
+}
+
+.profile{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.profile img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:50%;
+    background:#eee;
+}
+
+.profile h3{margin:0 0 6px}
+.profile p{margin:4px 0;color:#666}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    margin:3px;
+    background:#f8e6ea;
+    color:#8b1732;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.preview{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+    margin:10px auto;
+    background:#eee;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:30px;
+}
+
+.payment-box{
+    background:#fff7f8;
+    border:1px solid #f0d8de;
+    border-radius:15px;
+    padding:18px;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    color:#777;
+    padding:30px;
+    font-size:13px;
+}
+
+.admin-member{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+    background:#fff;
+}
+
+.admin-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    margin:3px 0;
+    background:#fff3cd;
+    color:#856404;
+}
+
+.admin-badge.approved{
+    background:#e8f5e9;
+    color:#176b2c;
+}
+
+.hidden{display:none!important}
+
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.stat{
+    background:#f8e6ea;
+    padding:15px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.stat strong{
+    display:block;
+    font-size:25px;
+    color:#8b1732;
+}
+
+@media(max-width:650px){
+    .stat-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💍 Kumaran Matrimony</h1>
+    <p>Kerala Matrimony • Meaningful Connections</p>
+</header>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('signup')">Sign Up</button>
+    <button onclick="showPage('profile')">My Profile</button>
+    <button onclick="showPage('search')">Search</button>
+    <button onclick="showPage('shortlist')">Shortlist</button>
+    <button onclick="showPage('interests')">Interests</button>
+    <button onclick="showPage('admin')">Admin</button>
+</nav>
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+    <div class="ring">💍</div>
+
+    <h2>Kumaran Matrimony</h2>
+
+    <p>
+        Find meaningful matrimonial connections across Kerala.
+    </p>
+
+    <button class="secondary"
+            onclick="showPage('signup')">
+        Create Your Profile
+    </button>
+
+</div>
+
+<div class="card">
+
+    <h2>3 Month Membership</h2>
+
+    <div class="price">₹200</div>
+
+    <p style="text-align:center">
+        Access profiles, search, shortlist and send interests.
+    </p>
+
+    <button class="primary"
+            onclick="showPage('signup')">
+        Register & Pay ₹200
+    </button>
+
+</div>
+
+<div class="card">
+
+    <h2>Features</h2>
+
+    <div class="grid">
+
+        <div>👤 Profile Creation</div>
+        <div>🔎 Search Profiles</div>
+        <div>📷 Profile Photo</div>
+        <div>❤️ Shortlist</div>
+        <div>💌 Send Interest</div>
+        <div>🔐 Local Storage</div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SIGN UP -->
+
+<section id="signup" class="page">
+
+<div class="card">
+
+<h2>Create Account</h2>
+
+<label>Mobile Number</label>
+
+<input
+    id="mobile"
+    type="tel"
+    maxlength="10"
+    placeholder="10 digit mobile number"
+>
+
+<label>Email</label>
+
+<input
+    id="email"
+    type="email"
+    placeholder="example@email.com"
+>
+
+<label>Password</label>
+
+<input
+    id="password"
+    type="password"
+    placeholder="Minimum 6 characters"
+>
+
+<div class="payment-box">
+
+<h2>Membership Payment</h2>
+
+<p>
+    3-month Kumaran Matrimony membership
+</p>
+
+<div class="price">
+    ₹200
+</div>
+
+<p>
+    Pay ₹200 using Google Pay / UPI to:
+</p>
+
+<div style="
+font-weight:bold;
+text-align:center;
+font-size:18px;
+padding:10px;
+background:#fff;
+border-radius:10px">
+    midhinjlegacy@oksbi
+</div>
+
+<button
+    class="primary"
+    onclick="startPayment()">
+    💳 Pay ₹200 with Google Pay
+</button>
+
+<button
+    id="confirmPaymentButton"
+    class="primary"
+    style="display:none;background:#176a30"
+    onclick="confirmPaymentAndOpenProfile()">
+    ✅ I've completed the ₹200 payment — Activate 3 Months
+</button>
+
+<div id="paymentMessage"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+<div class="card">
+
+<h2>My Profile</h2>
+
+<div id="membershipStatus"></div>
+
+<label>Profile Photo</label>
+
+<img
+    id="photoPreview"
+    class="preview"
+    alt="Profile photo"
+>
+
+<input
+    id="photoInput"
+    type="file"
+    accept="image/*"
+    onchange="loadPhoto(event)"
+>
+
+<label>Full Name</label>
+
+<input
+    id="name"
+    placeholder="Full name"
+>
+
+<div class="grid">
+
+<div>
+
+<label>Date of Birth</label>
+
+<input
+    id="dob"
+    type="date"
+>
+
+</div>
+
+<div>
+
+<label>Gender</label>
+
+<select id="gender">
+<option value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div>
+
+<label>Height</label>
+
+<select id="height">
+
+<option value="">Select</option>
+<option>5'0"</option>
+<option>5'1"</option>
+<option>5'2"</option>
+<option>5'3"</option>
+<option>5'4"</option>
+<option>5'5"</option>
+<option>5'6"</option>
+<option>5'7"</option>
+<option>5'8"</option>
+<option>5'9"</option>
+<option>5'10"</option>
+<option>5'11"</option>
+<option>6'0"</option>
+<option>6'1"</option>
+<option>6'2"</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Religion</label>
+
+<select id="religion">
+
+<option value="">Select</option>
+<option>Hindu</option>
+<option>Christian</option>
+<option>Muslim</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<label>Caste / Community</label>
+
+<input
+    id="caste"
+    placeholder="Caste / Community"
+>
+
+
+<label>Kerala District</label>
+
+<select id="district">
+
+<option value="">Select district</option>
+<option>Thiruvananthapuram</option>
+<option>Kollam</option>
+<option>Pathanamthitta</option>
+<option>Alappuzha</option>
+<option>Kottayam</option>
+<option>Idukki</option>
+<option>Ernakulam</option>
+<option>Thrissur</option>
+<option>Palakkad</option>
+<option>Malappuram</option>
+<option>Kozhikode</option>
+<option>Wayanad</option>
+<option>Kannur</option>
+<option>Kasaragod</option>
+
+</select>
+
+
+<div class="grid">
+
+<div>
+
+<label>Education</label>
+
+<input
+    id="education"
+    placeholder="Education"
+>
+
+</div>
+
+<div>
+
+<label>Occupation</label>
+
+<input
+    id="occupation"
+    placeholder="Occupation"
+>
+
+</div>
+
+</div>
+
+
+<label>Income</label>
+
+<input
+    id="income"
+    placeholder="Income"
+>
+
+
+<label>Marital Status</label>
+
+<select id="marital">
+
+<option value="">Select</option>
+<option>Never Married</option>
+<option>Divorced</option>
+<option>Widowed</option>
+
+</select>
+
+
+<label>Mother Tongue</label>
+
+<select id="motherTongue">
+
+<option>Malayalam</option>
+<option>English</option>
+<option>Tamil</option>
+<option>Kannada</option>
+<option>Other</option>
+
+</select>
+
+
+<label>About Me</label>
+
+<textarea
+    id="about"
+    placeholder="Write something about yourself"
+></textarea>
+
+
+<button
+    class="primary"
+    onclick="saveProfile()">
+    Save Profile
+</button>
+
+<div id="profileMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section id="search" class="page">
+
+<div class="card">
+
+<h2>Search Profiles</h2>
+
+<label>Gender</label>
+
+<select id="filterGender">
+<option value="">Any</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<label>Religion</label>
+
+<select id="filterReligion">
+<option value="">Any</option>
+<option>Hindu</option>
+<option>Christian</option>
+<option>Muslim</option>
+<option>Other</option>
+</select>
+
+<label>Caste / Community</label>
+
+<input
+    id="filterCaste"
+    placeholder="Any community"
+>
+
+<label>District</label>
+
+<select id="filterDistrict">
+
+<option value="">Any</option>
+<option>Thiruvananthapuram</option>
+<option>Kollam</option>
+<option>Pathanamthitta</option>
+<option>Alappuzha</option>
+<option>Kottayam</option>
+<option>Idukki</option>
+<option>Ernakulam</option>
+<option>Thrissur</option>
+<option>Palakkad</option>
+<option>Malappuram</option>
+<option>Kozhikode</option>
+<option>Wayanad</option>
+<option>Kannur</option>
+<option>Kasaragod</option>
+
+</select>
+
+<button
+    class="primary"
+    onclick="searchProfiles()">
+    🔎 Search
+</button>
+
+</div>
+
+<div id="searchResults"></div>
+
+</section>
+
+
+<!-- SHORTLIST -->
+
+<section id="shortlist" class="page">
+
+<div class="card">
+
+<h2>❤️ Shortlisted Profiles</h2>
+
+<div id="shortlistResults"></div>
+
+</div>
+
+</section>
+
+
+<!-- INTERESTS -->
+
+<section id="interests" class="page">
+
+<div class="card">
+
+<h2>💌 Interests Sent</h2>
+
+<div id="interestResults"></div>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="page">
+
+<div id="adminSignupPage" class="card">
+
+<h2>Admin Sign Up</h2>
+
+<form id="adminSignupForm">
+
+<label>Admin Name</label>
+
+<input
+    id="adminName"
+    required
+    placeholder="Admin name"
+>
+
+<label>Admin Gmail</label>
+
+<input
+    id="adminEmail"
+    type="email"
+    required
+    placeholder="admin@gmail.com"
+>
+
+<label>Admin Mobile</label>
+
+<input
+    id="adminMobile"
+    type="tel"
+    maxlength="10"
+    required
+    placeholder="10 digit mobile"
+>
+
+<label>Admin Password</label>
+
+<input
+    id="adminPassword"
+    type="password"
+    required
+    placeholder="Minimum 8 characters"
+>
+
+<button class="primary" type="submit">
+    Create Admin Account
+</button>
+
+</form>
+
+<div id="signupMessage"></div>
+
+<button
+    class="secondary"
+    style="margin-top:12px"
+    onclick="showAdminLogin()">
+    Already have an admin account? Login
+</button>
+
+</div>
+
+
+<div id="adminLoginPage" class="card hidden">
+
+<h2>Admin Login</h2>
+
+<form id="loginForm">
+
+<label>Admin Gmail</label>
+
+<input
+    id="loginEmail"
+    type="email"
+    required
+>
+
+<label>Password</label>
+
+<input
+    id="loginPassword"
+    type="password"
+    required
+>
+
+<button class="primary" type="submit">
+    Login
+</button>
+
+</form>
+
+<div id="loginMessage"></div>
+
+<button
+    class="secondary"
+    style="margin-top:12px"
+    onclick="googleAdminDemo()">
+    Continue with Google
+</button>
+
+</div>
+
+
+<div id="adminDashboard" class="hidden">
+
+<div class="card">
+
+<h2>Admin Dashboard</h2>
+
+<p id="adminWelcome"></p>
+
+<div class="stat-grid">
+
+<div class="stat">
+<strong id="adminTotalMembers">0</strong>
+Members
+</div>
+
+<div class="stat">
+<strong id="adminPendingMembers">0</strong>
+Pending
+</div>
+
+<div class="stat">
+<strong id="adminApprovedMembers">0</strong>
+Active
+</div>
+
+<div class="stat">
+<strong id="adminPaymentCount">0</strong>
+Payments
+</div>
+
+</div>
+
+<button
+    class="secondary"
+    style="margin-top:15px"
+    onclick="adminLogout()">
+    Logout
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Member Accounts</h2>
+
+<div id="adminMembers"></div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+    © 2026 Kumaran Matrimony
+</footer>
+
+
+<script>
+
+/*
+==================================================
+CONFIGURATION
+==================================================
+*/
+
+const UPI_ID = "midhinjlegacy@oksbi";
+const MEMBERSHIP_PRICE = 200;
+const MEMBERSHIP_DAYS = 90;
+
+
+/*
+==================================================
+PAGE NAVIGATION
+==================================================
+*/
+
+function showPage(pageId){
+
+    const protectedPages = [
+        "profile",
+        "search",
+        "shortlist",
+        "interests"
+    ];
+
+    if(
+        protectedPages.includes(pageId) &&
+        !isMembershipActive()
+    ){
+
+        alert(
+            "Please complete the ₹200 membership payment first."
+        );
+
+        pageId = "signup";
+    }
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page){
+
+            page.classList.remove("active");
+
+        });
+
+
+    const page =
+        document.getElementById(pageId);
+
+    if(page){
+
+        page.classList.add("active");
+
+    }
+
+
+    if(pageId === "profile"){
+        loadProfile();
+        updateMembership();
+    }
+
+    if(pageId === "search"){
+        searchProfiles();
+    }
+
+    if(pageId === "shortlist"){
+        renderShortlist();
+    }
+
+    if(pageId === "interests"){
+        renderInterests();
+    }
+
+    if(pageId === "admin"){
+        loadAdminPage();
+    }
+
+}
+
+
+/*
+==================================================
+MEMBERSHIP
+==================================================
+*/
+
+function isMembershipActive(){
+
+    const status =
+        localStorage.getItem(
+            "membershipStatus"
+        );
+
+    const expiry =
+        Number(
+            localStorage.getItem(
+                "membershipExpiry"
+            ) || 0
+        );
+
+    if(
+        status === "approved" &&
+        expiry > Date.now()
+    ){
+
+        return true;
+
+    }
+
+    if(
+        status === "approved" &&
+        expiry <= Date.now()
+    ){
+
+        localStorage.setItem(
+            "membershipStatus",
+            "expired"
+        );
+
+    }
+
+    return false;
+}
+
+
+function updateMembership(){
+
+    const box =
+        document.getElementById(
+            "membershipStatus"
+        );
+
+    if(!box) return;
+
+
+    if(isMembershipActive()){
+
+        const expiry =
+            Number(
+                localStorage.getItem(
+                    "membershipExpiry"
+                )
+            );
+
+        const date =
+            new Date(expiry)
+            .toLocaleDateString();
+
+        box.innerHTML =
+            '<div class="success">' +
+            '✅ Membership Active<br>' +
+            '₹200 • 3 months<br>' +
+            'Valid until: ' +
+            safe(date) +
+            '</div>';
+
+    }
+    else{
+
+        box.innerHTML =
+            '<div class="warning">' +
+            '🔒 Membership inactive. ' +
+            'Pay ₹200 for 3 months to activate your profile.' +
+            '</div>';
+
+    }
+
+}
+
+
+/*
+==================================================
+PAYMENT
+==================================================
+*/
+
+function startPayment(){
+
+    const mobile =
+        document.getElementById(
+            "mobile"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert(
+            "Please enter a valid 10 digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    if(!email){
+
+        alert(
+            "Please enter your email address."
+        );
+
+        return;
+
+    }
+
+
+    if(password.length < 6){
+
+        alert(
+            "Password must contain at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "kumaranAccount",
+        JSON.stringify({
+            mobile:mobile,
+            email:email,
+            password:password
+        })
+    );
+
+
+    const paymentRecord = {
+
+        amount:MEMBERSHIP_PRICE,
+
+        currency:"INR",
+
+        duration:"3 months",
+
+        upiId:UPI_ID,
+
+        status:"pending",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "paymentRecord",
+        JSON.stringify(paymentRecord)
+    );
+
+
+    /*
+    UPI deep link.
+
+    Google Pay may open if it is installed.
+    Otherwise Android can show another UPI application.
+    */
+
+    const upiUrl =
+        "upi://pay" +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+        "&pn=" +
+        encodeURIComponent(
+            "Kumaran Matrimony"
+        ) +
+        "&am=" +
+        encodeURIComponent(
+            MEMBERSHIP_PRICE
+        ) +
+        "&cu=INR" +
+        "&tn=" +
+        encodeURIComponent(
+            "Kumaran Matrimony 3 Month Membership"
+        );
+
+
+    const message =
+        document.getElementById(
+            "paymentMessage"
+        );
+
+
+    message.innerHTML =
+        '<div class="warning">' +
+        'Google Pay/UPI payment opened for ₹200. ' +
+        'After completing the payment, return to this app and press the confirmation button below.' +
+        '</div>';
+
+
+    document.getElementById(
+        "confirmPaymentButton"
+    ).style.display = "block";
+
+
+    window.location.href = upiUrl;
+
+}
+
+
+function confirmPaymentAndOpenProfile(){
+
+    const payment =
+        JSON.parse(
+            localStorage.getItem(
+                "paymentRecord"
+            ) || "null"
+        );
+
+
+    if(!payment){
+
+        alert(
+            "Please start the payment first."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    This is a client-side confirmation.
+    A production application should verify
+    the UPI transaction through a payment
+    gateway/backend before activation.
+    */
+
+    const expiry =
+        Date.now() +
+        (
+            MEMBERSHIP_DAYS *
+            24 *
+            60 *
+            60 *
+            1000
+        );
+
+
+    payment.status =
+        "confirmed_by_user";
+
+    payment.confirmedAt =
+        new Date().toISOString();
+
+
+    localStorage.setItem(
+        "paymentRecord",
+        JSON.stringify(payment)
+    );
+
+
+    localStorage.setItem(
+        "membershipStatus",
+        "approved"
+    );
+
+
+    localStorage.setItem(
+        "membershipExpiry",
+        String(expiry)
+    );
+
+
+    document.getElementById(
+        "paymentMessage"
+    ).innerHTML =
+        '<div class="success">' +
+        '✅ Membership activated for 3 months.' +
+        '</div>';
+
+
+    updateMembership();
+
+
+    setTimeout(
+        function(){
+
+            showPage("profile");
+
+        },
+        500
+    );
+
+}
+
+
+/*
+==================================================
+PROFILE
+==================================================
+*/
+
+function loadPhoto(event){
+
+    const file =
+        event.target.files[0];
+
+    if(!file) return;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e){
+
+            document.getElementById(
+                "photoPreview"
+            ).src = e.target.result;
+
+
+            const profile =
+                JSON.parse(
+                    localStorage.getItem(
+                        "kumaranProfile"
+                    ) || "{}"
+                );
+
+
+            profile.photo =
+                e.target.result;
+
+
+            localStorage.setItem(
+                "kumaranProfile",
+                JSON.stringify(profile)
+            );
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function saveProfile(){
+
+    if(!isMembershipActive()){
+
+        alert(
+            "Please activate the ₹200 membership first."
+        );
+
+        showPage("signup");
+
+        return;
+
+    }
+
+
+    const profile = {
+
+        id:
+            "profile_" +
+            Date.now(),
+
+        name:
+            document.getElementById(
+                "name"
+            ).value.trim(),
+
+        dob:
+            document.getElementById(
+                "dob"
+            ).value,
+
+        gender:
+            document.getElementById(
+                "gender"
+            ).value,
+
+        height:
+            document.getElementById(
+                "height"
+            ).value,
+
+        religion:
+            document.getElementById(
+                "religion"
+            ).value,
+
+        caste:
+            document.getElementById(
+                "caste"
+            ).value.trim(),
+
+        district:
+            document.getElementById(
+                "district"
+            ).value,
+
+        education:
+            document.getElementById(
+                "education"
+            ).value.trim(),
+
+        occupation:
+            document.getElementById(
+                "occupation"
+            ).value.trim(),
+
+        income:
+            document.getElementById(
+                "income"
+            ).value.trim(),
+
+        marital:
+            document.getElementById(
+                "marital"
+            ).value,
+
+        motherTongue:
+            document.getElementById(
+                "motherTongue"
+            ).value,
+
+        about:
+            document.getElementById(
+                "about"
+            ).value.trim(),
+
+        photo:
+            document.getElementById(
+                "photoPreview"
+            ).src || "",
+
+        updatedAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "kumaranProfile",
+        JSON.stringify(profile)
+    );
+
+
+    /*
+    Keep the local profile list so
+    search functionality can display it.
+    */
+
+    const profiles =
+        getProfiles();
+
+
+    const existing =
+        profiles.findIndex(
+            function(p){
+                return p.isMine === true;
+            }
+        );
+
+
+    profile.isMine = true;
+
+
+    if(existing >= 0){
+
+        profiles[existing] =
+            profile;
+
+    }
+    else{
+
+        profiles.push(profile);
+
+    }
+
+
+    localStorage.setItem(
+        "kumaranProfiles",
+        JSON.stringify(profiles)
+    );
+
+
+    document.getElementById(
+        "profileMessage"
+    ).innerHTML =
+        '<div class="success">' +
+        '✅ Profile saved successfully.' +
+        '</div>';
+
+}
+
+
+function loadProfile(){
+
+    const profile =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranProfile"
+            ) || "null"
+        );
+
+
+    if(!profile) return;
+
+
+    const fields = {
+
+        name:"name",
+        dob:"dob",
+        gender:"gender",
+        height:"height",
+        religion:"religion",
+        caste:"caste",
+        district:"district",
+        education:"education",
+        occupation:"occupation",
+        income:"income",
+        marital:"marital",
+        motherTongue:"motherTongue",
+        about:"about"
+
+    };
+
+
+    Object.keys(fields).forEach(
+        function(key){
+
+            const element =
+                document.getElementById(
+                    fields[key]
+                );
+
+            if(element){
+
+                element.value =
+                    profile[key] || "";
+
+            }
+
+        }
+    );
+
+
+    if(profile.photo){
+
+        document.getElementById(
+            "photoPreview"
+        ).src =
+            profile.photo;
+
+    }
+
+
+    updateMembership();
+
+}
+
+
+/*
+==================================================
+PROFILE STORAGE
+==================================================
+*/
+
+function getProfiles(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "kumaranProfiles"
+        ) || "[]"
+    );
+
+}
+
+
+/*
+==================================================
+SEARCH
+==================================================
+*/
+
+function searchProfiles(){
+
+    if(!isMembershipActive()){
+
+        const box =
+            document.getElementById(
+                "searchResults"
+            );
+
+        if(box){
+
+            box.innerHTML =
+                '<div class="card">' +
+                '<div class="warning">' +
+                '🔒 Activate the ₹200 / 3-month membership to search profiles.' +
+                '</div>' +
+                '</div>';
+
+        }
+
+        return;
+
+    }
+
+
+    const gender =
+        document.getElementById(
+            "filterGender"
+        )?.value || "";
+
+
+    const religion =
+        document.getElementById(
+            "filterReligion"
+        )?.value || "";
+
+
+    const caste =
+        (
+            document.getElementById(
+                "filterCaste"
+            )?.value || ""
+        ).toLowerCase();
+
+
+    const district =
+        document.getElementById(
+            "filterDistrict"
+        )?.value || "";
+
+
+    let profiles =
+        getProfiles();
+
+
+    profiles =
+        profiles.filter(
+            function(profile){
+
+                if(profile.isMine){
+
+                    return false;
+
+                }
+
+
+                if(
+                    gender &&
+                    profile.gender !== gender
+                ){
+
+                    return false;
+
+                }
+
+
+                if(
+                    religion &&
+                    profile.religion !== religion
+                ){
+
+                    return false;
+
+                }
+
+
+                if(
+                    caste &&
+                    !String(
+                        profile.caste || ""
+                    )
+                    .toLowerCase()
+                    .includes(caste)
+                ){
+
+                    return false;
+
+                }
+
+
+                if(
+                    district &&
+                    profile.district !== district
+                ){
+
+                    return false;
+
+                }
+
+
+                return true;
+
+            }
+        );
+
+
+    renderProfiles(
+        profiles,
+        "searchResults"
+    );
+
+}
+
+
+/*
+==================================================
+RENDER PROFILES
+==================================================
+*/
+
+function renderProfiles(
+    profiles,
+    containerId
+){
+
+    const box =
+        document.getElementById(
+            containerId
+        );
+
+
+    if(!box) return;
+
+
+    if(!profiles.length){
+
+        box.innerHTML =
+            '<div class="empty">' +
+            'No profiles found.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    const shortlist =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranShortlist"
+            ) || "[]"
+        );
+
+
+    const interests =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranInterests"
+            ) || "[]"
+        );
+
+
+    box.innerHTML = "";
+
+
+    profiles.forEach(
+        function(profile){
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "card";
+
+
+            const photo =
+                profile.photo ||
+                "";
+
+
+            card.innerHTML =
+
+                '<div class="profile">' +
+
+                '<img src="' +
+                safe(photo) +
+                '" alt="Profile photo">' +
+
+                '<div>' +
+
+                '<h3>' +
+                safe(profile.name || "Member") +
+                '</h3>' +
+
+                '<p>' +
+                safe(profile.district || "") +
+                '</p>' +
+
+                '<span class="badge">' +
+                safe(profile.gender || "") +
+                '</span>' +
+
+                '<span class="badge">' +
+                safe(profile.religion || "") +
+                '</span>' +
+
+                '<span class="badge">' +
+                safe(profile.caste || "") +
+                '</span>' +
+
+                '</div>' +
+
+                '</div>' +
+
+                '<p>' +
+                safe(profile.about || "") +
+                '</p>' +
+
+                '<button class="secondary" ' +
+                'onclick="toggleShortlist(\'' +
+                safe(profile.id) +
+                '\')">' +
+
+                (
+                    shortlist.includes(
+                        profile.id
+                    )
+                    ?
+                    "❤️ Shortlisted"
+                    :
+                    "🤍 Shortlist"
+                ) +
+
+                '</button> ' +
+
+                '<button class="secondary" ' +
+                'onclick="sendInterest(\'' +
+                safe(profile.id) +
+                '\')">' +
+
+                (
+                    interests.includes(
+                        profile.id
+                    )
+                    ?
+                    "💌 Sent"
+                    :
+                    "💌 Send Interest"
+                ) +
+
+                '</button>';
+
+
+            box.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/*
+==================================================
+SHORTLIST
+==================================================
+*/
+
+function toggleShortlist(id){
+
+    if(
+        !isMembershipActive()
+    ){
+
+        alert(
+            "Please activate your membership first."
+        );
+
+        showPage("signup");
+
+        return;
+
+    }
+
+
+    let shortlist =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranShortlist"
+            ) || "[]"
+        );
+
+
+    if(
+        shortlist.includes(id)
+    ){
+
+        shortlist =
+            shortlist.filter(
+                function(item){
+
+                    return item !== id;
+
+                }
+            );
+
+    }
+    else{
+
+        shortlist.push(id);
+
+    }
+
+
+    localStorage.setItem(
+        "kumaranShortlist",
+        JSON.stringify(
+            shortlist
+        )
+    );
+
+
+    searchProfiles();
+
+    renderShortlist();
+
+}
+
+
+function renderShortlist(){
+
+    if(!isMembershipActive()){
+
+        const box =
+            document.getElementById(
+                "shortlistResults"
+            );
+
+        if(box){
+
+            box.innerHTML =
+                '<div class="warning">' +
+                '🔒 Activate membership first.' +
+                '</div>';
+
+        }
+
+        return;
+
+    }
+
+
+    const shortlist =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranShortlist"
+            ) || "[]"
+        );
+
+
+    const list =
+        getProfiles().filter(
+            function(profile){
+
+                return shortlist.includes(
+                    profile.id
+                );
+
+            }
+        );
+
+
+    renderProfiles(
+        list,
+        "shortlistResults"
+    );
+
+}
+
+
+/*
+==================================================
+INTERESTS
+==================================================
+*/
+
+function sendInterest(id){
+
+    if(!isMembershipActive()){
+
+        alert(
+            "Please activate your membership first."
+        );
+
+        showPage("signup");
+
+        return;
+
+    }
+
+
+    let interests =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranInterests"
+            ) || "[]"
+        );
+
+
+    if(
+        !interests.includes(id)
+    ){
+
+        interests.push(id);
+
+
+        localStorage.setItem(
+            "kumaranInterests",
+            JSON.stringify(
+                interests
+            )
+        );
+
+
+        alert(
+            "Interest sent successfully."
+        );
+
+    }
+    else{
+
+        alert(
+            "Interest already sent."
+        );
+
+    }
+
+
+    searchProfiles();
+
+    renderInterests();
+
+}
+
+
+function renderInterests(){
+
+    if(!isMembershipActive()){
+
+        const box =
+            document.getElementById(
+                "interestResults"
+            );
+
+        if(box){
+
+            box.innerHTML =
+                '<div class="warning">' +
+                '🔒 Activate membership first.' +
+                '</div>';
+
+        }
+
+        return;
+
+    }
+
+
+    const interests =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranInterests"
+            ) || "[]"
+        );
+
+
+    const list =
+        getProfiles().filter(
+            function(profile){
+
+                return interests.includes(
+                    profile.id
+                );
+
+            }
+        );
+
+
+    renderProfiles(
+        list,
+        "interestResults"
+    );
+
+}
+
+
+/*
+==================================================
+HTML SAFETY
+==================================================
+*/
+
+function safe(value){
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/*
+==================================================
+ADMIN ACCOUNT
+==================================================
+*/
+
+function adminAccount(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "kumaranAdmin"
+        ) || "null"
+    );
+
+}
+
+
+function showAdminSignup(){
+
+    document
+        .getElementById(
+            "adminSignupPage"
+        )
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById(
+            "adminLoginPage"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "adminDashboard"
+        )
+        .classList.add("hidden");
+
+}
+
+
+function showAdminLogin(){
+
+    const a =
+        adminAccount();
+
+
+    if(!a){
+
+        alert(
+            "Create an admin account first."
+        );
+
+        showAdminSignup();
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "adminSignupPage"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "adminLoginPage"
+        )
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById(
+            "adminDashboard"
+        )
+        .classList.add("hidden");
+
+}
+
+
+/*
+==================================================
+ADMIN SIGNUP
+==================================================
+*/
+
+document
+.getElementById(
+    "adminSignupForm"
+)
+.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "adminName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "adminEmail"
+            ).value.trim()
+            .toLowerCase();
+
+
+        const mobile =
+            document.getElementById(
+                "adminMobile"
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                "adminPassword"
+            ).value;
+
+
+        if(
+            !/^[0-9]{10}$/.test(
+                mobile
+            )
+        ){
+
+            document.getElementById(
+                "signupMessage"
+            ).innerHTML =
+                '<div class="warning">' +
+                'Enter a valid 10 digit mobile number.' +
+                '</div>';
+
+            return;
+
+        }
+
+
+        if(
+            password.length < 8
+        ){
+
+            document.getElementById(
+                "signupMessage"
+            ).innerHTML =
+                '<div class="warning">' +
+                'Admin password must contain at least 8 characters.' +
+                '</div>';
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "kumaranAdmin",
+            JSON.stringify({
+                name:name,
+                email:email,
+                mobile:mobile,
+                password:password
+            })
+        );
+
+
+        document.getElementById(
+            "signupMessage"
+        ).innerHTML =
+            '<div class="success">' +
+            'Admin account created. Please login.' +
+            '</div>';
+
+
+        document
+            .getElementById(
+                "adminSignupForm"
+            )
+            .reset();
+
+
+        setTimeout(
+            showAdminLogin,
+            500
+        );
+
+    }
+);
+
+
+/*
+==================================================
+ADMIN LOGIN
+==================================================
+*/
+
+document
+.getElementById(
+    "loginForm"
+)
+.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+
+        const a =
+            adminAccount();
+
+
+        const email =
+            document.getElementById(
+                "loginEmail"
+            ).value
+            .trim()
+            .toLowerCase();
+
+
+        const password =
+            document.getElementById(
+                "loginPassword"
+            ).value;
+
+
+        if(
+            !a ||
+            a.email !== email ||
+            a.password !== password
+        ){
+
+            document.getElementById(
+                "loginMessage"
+            ).innerHTML =
+                '<div class="warning">' +
+                'Invalid admin Gmail or password.' +
+                '</div>';
+
+            return;
+
+        }
+
+
+        sessionStorage.setItem(
+            "kumaranAdminLoggedIn",
+            "yes"
+        );
+
+
+        document.getElementById(
+            "loginMessage"
+        ).innerHTML =
+            '<div class="success">' +
+            'Login successful.' +
+            '</div>';
+
+
+        openAdminDashboard();
+
+    }
+);
+
+
+function googleAdminDemo(){
+
+    alert(
+        "Google Sign-In needs a real OAuth/Firebase configuration. " +
+        "This button does not authenticate a user."
+    );
+
+}
+
+
+/*
+==================================================
+ADMIN DASHBOARD
+==================================================
+*/
+
+function openAdminDashboard(){
+
+    const a =
+        adminAccount();
+
+
+    document
+        .getElementById(
+            "adminSignupPage"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "adminLoginPage"
+        )
+        .classList.add("hidden");
+
+
+    document
+        .getElementById(
+            "adminDashboard"
+        )
+        .classList.remove("hidden");
+
+
+    document.getElementById(
+        "adminWelcome"
+    ).innerText =
+        "Welcome, " +
+        (
+            a
+            ?
+            a.name
+            :
+            "Administrator"
+        ) +
+        ".";
+
+
+    renderAdminMembers();
+
+}
+
+
+function adminLogout(){
+
+    sessionStorage.removeItem(
+        "kumaranAdminLoggedIn"
+    );
+
+    showAdminLogin();
+
+}
+
+
+function renderAdminMembers(){
+
+    const account =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranAccount"
+            ) || "null"
+        );
+
+
+    const profile =
+        JSON.parse(
+            localStorage.getItem(
+                "kumaranProfile"
+            ) || "null"
+        );
+
+
+    const payment =
+        JSON.parse(
+            localStorage.getItem(
+                "paymentRecord"
+            ) || "null"
+        );
+
+
+    const status =
+        localStorage.getItem(
+            "membershipStatus"
+        ) || "inactive";
+
+
+    const hasMember =
+        !!account ||
+        !!profile;
+
+
+    const total =
+        hasMember ? 1 : 0;
+
+
+    const pending =
+        status === "pending"
+        ?
+        1
+        :
+        0;
+
+
+    const approved =
+        status === "approved"
+        ?
+        1
+        :
+        0;
+
+
+    document.getElementById(
+        "adminTotalMembers"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "adminPendingMembers"
+    ).innerText =
+        pending;
+
+
+    document.getElementById(
+        "adminApprovedMembers"
+    ).innerText =
+        approved;
+
+
+    document.getElementById(
+        "adminPaymentCount"
+    ).innerText =
+        payment
+        ?
+        1
+        :
+        0;
+
+
+    const box =
+        document.getElementById(
+            "adminMembers"
+        );
+
+
+    if(!hasMember){
+
+        box.innerHTML =
+            '<div class="empty">' +
+            'No member account has been created on this device yet.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    const name =
+        profile &&
+        profile.name
+        ?
+        profile.name
+        :
+        "Member";
+
+
+    const mobile =
+        account &&
+        account.mobile
+        ?
+        account.mobile
+        :
+        "";
+
+
+    const email =
+        account &&
+        account.email
+        ?
+        account.email
+        :
+        "";
+
+
+    const paymentStatus =
+        payment
+        ?
+        payment.status
+        :
+        "none";
+
+
+    box.innerHTML =
+
+        '<div class="admin-member">' +
+
+        '<h3>' +
+        safe(name) +
+        '</h3>' +
+
+        '<p>Email: ' +
+        safe(email) +
+        '</p>' +
+
+        '<p>Mobile: ' +
+        safe(mobile) +
+        '</p>' +
+
+        '<p>Payment: ₹' +
+        (
+            payment
+            ?
+            "200"
+            :
+            "0"
+        ) +
+        '</p>' +
+
+        '<p>UPI ID: ' +
+        safe(UPI_ID) +
+        '</p>' +
+
+        '<span class="admin-badge ' +
+        (
+            status === "approved"
+            ?
+            "approved"
+            :
+            ""
+        ) +
+        '">' +
+        safe(status) +
+        '</span>' +
+
+        '<div style="margin-top:10px">' +
+
+        (
+            status === "approved"
+
+            ?
+
+            '<button class="secondary" onclick="deactivateMember()">' +
+            'Deactivate' +
+            '</button>'
+
+            :
+
+            '<button class="primary" onclick="approveMember()">' +
+            'Verify Payment & Activate' +
+            '</button>'
+
+        ) +
+
+        '</div>' +
+
+        '<p style="font-size:12px;color:#777;margin-top:10px">' +
+        'Payment record status: ' +
+        safe(paymentStatus) +
+        '</p>' +
+
+        '</div>';
+
+}
+
+
+/*
+==================================================
+ADMIN PAYMENT APPROVAL
+==================================================
+*/
+
+function approveMember(){
+
+    const payment =
+        JSON.parse(
+            localStorage.getItem(
+                "paymentRecord"
+            ) || "null"
+        );
+
+
+    if(!payment){
+
+        alert(
+            "No payment record exists yet."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    IMPORTANT:
+
+    This is a local admin workflow only.
+
+    For a production application,
+    the server must verify the actual
+    UPI/payment transaction before activation.
+    */
+
+
+    const expiry =
+        Date.now() +
+        (
+            MEMBERSHIP_DAYS *
+            24 *
+            60 *
+            60 *
+            1000
+        );
+
+
+    localStorage.setItem(
+        "membershipStatus",
+        "approved"
+    );
+
+
+    localStorage.setItem(
+        "membershipExpiry",
+        String(expiry)
+    );
+
+
+    payment.status =
+        "verified";
+
+
+    payment.verifiedAt =
+        new Date().toISOString();
+
+
+    localStorage.setItem(
+        "paymentRecord",
+        JSON.stringify(payment)
+    );
+
+
+    alert(
+        "Membership activated for 3 months."
+    );
+
+
+    renderAdminMembers();
+
+    updateMembership();
+
+}
+
+
+function deactivateMember(){
+
+    localStorage.setItem(
+        "membershipStatus",
+        "inactive"
+    );
+
+
+    localStorage.removeItem(
+        "membershipExpiry"
+    );
+
+
+    const payment =
+        JSON.parse(
+            localStorage.getItem(
+                "paymentRecord"
+            ) || "null"
+        );
+
+
+    if(payment){
+
+        payment.status =
+            "deactivated";
+
+
+        localStorage.setItem(
+            "paymentRecord",
+            JSON.stringify(payment)
+        );
+
+    }
+
+
+    renderAdminMembers();
+
+    updateMembership();
+
+}
+
+
+/*
+==================================================
+LOAD ADMIN PAGE
+==================================================
+*/
+
+function loadAdminPage(){
+
+    if(
+        sessionStorage.getItem(
+            "kumaranAdminLoggedIn"
+        ) === "yes"
+    ){
+
+        openAdminDashboard();
+
+    }
+    else if(
+        adminAccount()
+    ){
+
+        showAdminLogin();
+
+    }
+    else{
+
+        showAdminSignup();
+
+    }
+
+}
+
+
+/*
+==================================================
+INITIALIZE
+==================================================
+*/
+
+updateMembership();
+
+searchProfiles();
+
+</script>
+
+</body>
+</html>
